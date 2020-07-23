@@ -26,6 +26,8 @@ author = 'Nizar DELLELI'
 # The full version, including alpha/beta/rc tags
 release = '0.0.1.dev0'
 
+# specify the master doc, otherwise the build at read the docs fails
+master_doc = 'index'
 
 # -- General configuration ---------------------------------------------------
 
@@ -33,6 +35,9 @@ release = '0.0.1.dev0'
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = [
+    'sphinx.ext.autodoc',
+    'sphinx.ext.todo',
+    # 'sphinx.ext.coverage',
     'sphinx_rtd_theme',
 ]
 
