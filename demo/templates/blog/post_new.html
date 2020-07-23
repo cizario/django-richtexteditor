@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block stylesheets %}
+  {{ form.media.css }}
+{% endblock %}
+
+{% block body %}
+  <main role="main">
+    <div class="container pt-5 pb-5">
+      <div class="row">
+        <div class="offset-md-2 col-md-8">
+          {% for message in messages %}
+          <div class="alert alert-{{ message.tags }} alert-dismissible fade show rounded-0" role="alert">
+            <strong class="text-uppercase">{{ message.tags }}!</strong> {{ message }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          {% endfor %}
+          <form class="form-post needs-validation" action="{% url 'blog:post_new' %}" method="POST" novalidate role="form">
+            {% csrf_token %}
+            <div class="form-group">
+              {{ form.title }}
+              {% if form.title.errors %}
+                {% for error in form.title.errors %}
+                  <div class="invalid-feedback">{{ error }}</div>
+                {% endfor %}
+              {% endif %}
+            </div>
+            <div class="form-group">
+              {{ form.content }}
+              {% if form.content.errors %}
+                {% for error in form.content.errors %}
+                  <div class="invalid-feedback">{{ error }}</div>
+                {% endfor %}
+              {% endif %}
+            </div>
+            <div class="form-group">
+              {{ form.excerpt }}
+              {% if form.excerpt.errors %}
+                {% for error in form.excerpt.errors %}
+                  <div class="invalid-feedback">{{ error }}</div>
+                {% endfor %}
+              {% endif %}
+            </div>
+            <div class="form-group">
+              <button type="submit" class="btn btn-primary rounded-0 shadow-none"><span class="loading text-capitalize">Send</span></button>
+            </div>
+            <small class="form-text text-muted">Fields marked with (<span class="text-danger">*</span>) are required.</small>
+          </form>
+        </div>
+      </div>
+    </div>
+  </main>
+{% endblock %}
+
+{% block javascripts %}
+  {{ form.media.js }}
+{% endblock %}

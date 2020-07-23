@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block body %}
+  <main role="main">
+    <div class="container pt-5 pb-5">
+      <div class="row">
+        <div class="offset-md-2 col-md-8">
+        {% for post in posts %}
+          <article class="border shadow-sm p-3 mb-3">
+            <h1 class="">{{ post.title|safe }}</h1>
+            <div class="small text-muted">{{ post.excerpt|safe }}</div>
+            {{ post.content|safe }}
+          </article>
+        {% empty %}
+          <div class="col-md-12">
+            <div class="alert alert-warning rounded-0" role="alert">No posts are available right now!.</div>
+          </div>
+        {% endfor %}
+        </div>
+      </div>
+    </div>
+  </main>
+{% endblock %}
