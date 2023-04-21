@@ -3,4 +3,4 @@ Django==3.0.8
 # Editable install with no version control (django-richtexteditor==0.0.1.dev3)
 -e c:\python37\_apps\django\django-richtexteditor
 pytz==2020.1
-sqlparse==0.3.1
+sqlparse==0.4.4
